@@ -2,6 +2,7 @@
 layout: default
 title: Color
 parent: Utilities
+grand_parent: just-the-docs
 nav_order: 3
 ---
 

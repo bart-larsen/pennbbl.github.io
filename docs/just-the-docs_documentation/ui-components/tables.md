@@ -2,6 +2,7 @@
 layout: default
 title: Tables
 parent: UI Components
+grand_parent: just-the-docs
 nav_order: 4
 ---
 

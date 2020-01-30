@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Search
-nav_order: 7
+parent: just-the-docs
+nav_order: 4
 ---
 
 # Search

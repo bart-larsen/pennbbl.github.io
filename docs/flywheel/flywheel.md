@@ -10,7 +10,7 @@ permalink: docs/flywheel
 {: .no_toc }
 
 Data collected at UPenn research scanners is anonymized and uploaded to
-[Flywheel](upenn.flywheel.io). You need a PennKey to log in to Flywheel and
+[Flywheel](https://upenn.flywheel.io). You need a PennKey to log in to Flywheel and
 need to be added to projects by your lab's Flywheel administrator. In addition
 to storing data, Flywheel can also process your data with its "gears". You will
 interact with Flywheel either through your web browser or using the Flywheel

@@ -21,17 +21,17 @@ This site documents knowledge and practices in informatics, engineering, and sys
 
 - How to get a new Flywheel account
 - How to transfer DICOM files from place to place
-- How to use `QSIPrep` or `XCPEngine
+- How to use `QSIPrep` or `XCPEngine`
 - How to set python environment management
 - Who to turn to for additional help
 
 This site will help you navigate informatics at LINC.
 
-This effort's success is dependent on your involvement as lab members and a community, so if you have edits to suggest, or documentation requests, please make them known by submitting an [issue](https://github.com/PennBBL/pennbbl.github.io/issues) or a [pull request](https://github.com/PennBBL/pennbbl.github.io/pulls). If you are a LINC member and are documenting one of your tools/processes, please create your documentation according to the LINC documentation guidelines [documentation on how to create documentation coming soon]() and submit a [Pull Request](https://github.com/PennBBL/pennbbl.github.io/pulls), so it can be reviewed and added to the site.
+This effort's success is dependent on your involvement as lab members and a community, so if you have edits to suggest, or documentation requests, please make them known by submitting an [issue](https://github.com/PennBBL/pennbbl.github.io/issues) or a [pull request](https://github.com/PennBBL/pennbbl.github.io/pulls). If you are a LINC member and are documenting one of your tools/processes, please create your documentation according to the LINC documentation guidelines ([documentation guidelines on how to create documentation coming soon]()) and submit a [Pull Request](https://github.com/PennBBL/pennbbl.github.io/pulls), so it can be reviewed and added to the site.
 
 ---
 
-This documentation website was created using Jekyll and Github pages; the template is [`just-the-docs`](https://pmarsceill.github.io/just-the-docs/).
+This documentation website was created using [Jekyll and Github pages](https://help.github.com/en/github/working-with-github-pages/setting-up-a-github-pages-site-with-jekyll); the template is [`just-the-docs`](https://pmarsceill.github.io/just-the-docs/).
 
 #### Thank you to the contributors for LINC tutorials!
 

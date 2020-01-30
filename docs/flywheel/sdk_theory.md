@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Using the Flywheel SDK
-parent: flywheel
+parent: Flywheel
 nav_order: 3
 ---
 

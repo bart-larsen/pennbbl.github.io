@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Layout
-parent: flywheel
+parent: Flywheel
 nav_order: 1
 ---
 

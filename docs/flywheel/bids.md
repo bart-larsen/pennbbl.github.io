@@ -1,7 +1,7 @@
 ---
 layout: default
 title: BIDS Curation
-parent: flywheel
+parent: Flywheel
 nav_order: 2
 ---
 

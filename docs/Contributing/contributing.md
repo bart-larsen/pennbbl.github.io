@@ -8,4 +8,5 @@ nav_order: 2
 
 Here, find all you need to know about contributing to this site.
 
-`Even Ted could do this`
+"It’s not a bug – it’s an undocumented feature." – Anonymous
+

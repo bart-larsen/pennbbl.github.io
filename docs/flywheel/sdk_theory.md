@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using the Flywheel SDK
+title: Flywheel SDK Theory
 parent: Flywheel
 nav_order: 3
 ---

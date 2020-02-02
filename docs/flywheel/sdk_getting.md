@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using the Flywheel SDK
+title: "Getting Data from Flywheel"
 parent: Flywheel
 nav_order: 4
 ---

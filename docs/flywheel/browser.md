@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Layout
+title: Flywheel GUI
 parent: Flywheel
 nav_order: 1
 ---

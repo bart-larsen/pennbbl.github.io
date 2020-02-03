@@ -64,7 +64,6 @@ parser.add_argument('-n', '--name', required = True) # the desired name for the 
 inputs = parser.parse_args()
 
 # Feed in the user inputs
-# 1. Path to the csv
 path2data = inputs.data
 project = inputs.project
 name = inputs.name

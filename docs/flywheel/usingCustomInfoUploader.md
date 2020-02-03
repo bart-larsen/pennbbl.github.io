@@ -1,24 +1,32 @@
+---
+layout: default
+title: Custom Info Uploader
+parent: Flywheel
+nav_order: 6
+has_toc: false
+---
 # General Custom Info To Flywheel Uploader
 
-### This script takes as input a CSV file with the following characteristics:
-#### 1. No Protected Health Information (PHI) in the file
-#### 2. All columns are named
-#### 3. The subject ID column is named "bblid"
-#### 4. All data is numeric (i.e. 1s and 0s) 
-# 
-### It then organizes the data into dictionaries and uploads it to each subject's Custom Info field on flywheel. 
-# 
-### The script can be called in the terminal by doing: 
-##### ```python customInfoUploader.py -d path/to/CSV -p name_of_project -n dict_name``` 
-# 
-### For example, to upload data in a csv called "flavortown.csv" to my "GUY_FIERI" project on flywheel as a custom field called "recipes" I would do:
-##### ```python customInfoUploader.py -d flavortown.csv -p GUY_FIERI -n recipes```
-# 
-### *NOTE: Prior to uploading, please sign into a flywheel session in your environment. See here for instructions: https://flywheel-io.github.io/core/branches/master/python/getting_started.html
-#
-#### See below for the script. You can also find it here: https://github.com/diegodav/general_customInfoUploader/blob/master/customInfoUploader.py
+ This script takes as input a CSV file with the following characteristics:
+ 1. No Protected Health Information (PHI) in the file
+ 2. All columns are named
+ 3. The subject ID column is named "bblid"
+ 4. All data is numeric (i.e. 1s and 0s)
 
-```python
+ It then organizes the data into dictionaries and uploads it to each subject's Custom Info field on flywheel. The script can be called in the terminal by doing:
+```
+python customInfoUploader.py -d path/to/CSV -p name_of_project -n dict_name
+```
+For example, to upload data in a csv called "flavortown.csv" to my "GUY_FIERI" project on flywheel as a custom field called "recipes" I would do:
+```
+python customInfoUploader.py -d flavortown.csv -p GUY_FIERI -n recipes
+```
+
+*NOTE: Prior to uploading, please sign into a flywheel session in your environment. See here for instructions: https://flywheel-io.github.io/core/branches/master/python/getting_started.html*
+
+See below for the script. You can also find it here: https://github.com/diegodav/general_customInfoUploader/blob/master/customInfoUploader.py
+
+```
 #####################################################################################
 ####                           Custom Info Uploader                              ####
 ####                           By: Diego G. Dávila                               ####
@@ -110,4 +118,5 @@ for i in range(len(subjects)):
              logger.error(y)
         print ("Uploading {}'s Info".format(bblid))
     else:
-        print('{} was not uploaded because it was not found in the input csv'.format(bblid))```
+        print('{} was not uploaded because it was not found in the input csv'.format(bblid))
+```

@@ -20,21 +20,6 @@ gear_testing
 
 In the code above, if get an error like `AttributeError: 'NoneType' object has no attribute 'label'` it means that Flywheel couldn't find a project with the label you specified.
 
-## Deciding on a name for your analysis
-
-The actual analysis doesn't exist anywhere, just lots of data containers. It is good practice to use `datetime` objects and a descriptive name to label analyses so they can be found later for downloading.
-
-```python
->>> import datetime
->>> now = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M")
->>> analysis_label = 'BOLD_Preproc_' + now
->>> print(analysis_label)
-BOLD_Preproc_2020-01-31_12:32
-
-```
-
-This label will be used for analysis objects created by these gear runs.
-
 ## Finding a gear
 
 Gears have a name and a label. The name is used to find the gear and the label is a human-readable description of the gear. This is how to list all the gear names and labels available on your Flywheel instance:
@@ -67,6 +52,22 @@ Gears can be found using the `fw.lookup()` command. Find the algorithm you want 
 fMRIPREP: A Robust Preprocessing Pipeline for fMRI Data [fw-heudiconv]
 
 ```
+
+## Deciding on a name for your analysis
+
+The actual analysis doesn't exist anywhere, just lots of data containers. It is good practice to use `datetime` objects and a descriptive name to label analyses so they can be found later for downloading. You should put the exact version of the gear in your analysis name, too.  Assuming you're continuing from the previous section, you could do something like this:
+
+```python
+>>> import datetime
+>>> now = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M")
+>>> analysis_label = 'BOLD_Preproc_{}_{}_{}'.format(
+...     now, fmriprep.gear.name, fmriprep.gear.version)
+>>> print(analysis_label)
+BOLD_Preproc_2020-02-04_12:40_fmriprep-fwheudiconv_0.2.2_1.5.2
+
+```
+
+This label will be used for analysis objects created by these gear runs.
 
 ## Setting gear configuration options
 
@@ -172,6 +173,7 @@ This shows which index each file is located at. So if we wanted to use `license.
 
 ### Attaching analysis objects from another gear
 
+Analysis gears store their results in a Flywheel data container. This container could be a Acquisition, Subject, Session or Project. If the gear was run using the SDK, there was a keyword argument `destination=`, which specified a data container object. Suppose the analysis used a session container as its `destination`.
 
 
 ## Launching gears on sessions
@@ -206,6 +208,8 @@ for ses in sessions_to_run:
         fails.append(ses)
 
 ```
+
+You should keep track of the job ids from the
 
 ### Cancelling mistakes
 

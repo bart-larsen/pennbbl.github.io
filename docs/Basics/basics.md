@@ -9,7 +9,7 @@ nav_order: 2
 
 # Background
 
-Here is some basic information about using these tutorials.
+The following sections describe the initial actions that are needed before the more useful tutorials in other sections can be run. Each tutorial lists the prerequisites.
 
 # Installing python
 

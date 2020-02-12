@@ -13203,7 +13203,7 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Gear-Development-on-Flywheel">Gear Development on Flywheel<a class="anchor-link" href="#Gear-Development-on-Flywheel">&#182;</a></h1><hr>
-<h2 id="A-Guide-to-Developing-&amp;-Maintaining-Gears-on-Flywheel">A Guide to Developing &amp; Maintaining Gears on Flywheel<a class="anchor-link" href="#A-Guide-to-Developing-&amp;-Maintaining-Gears-on-Flywheel">&#182;</a></h2><p>Presented by Tinashe M. Tapera at Data Club February 12 2020</p>
+<h2 id="A-Guide-to-Developing-&amp;-Maintaining-Gears-on-Flywheel">A Guide to Developing &amp; Maintaining Gears on Flywheel<a class="anchor-link" href="#A-Guide-to-Developing-&amp;-Maintaining-Gears-on-Flywheel">&#182;</a></h2><p>Slide show presented by Tinashe M. Tapera at Data Club February 12 2020</p>
 
 </div>
 </div>
@@ -13395,7 +13395,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The manifest is going to provide Flywheel with all the information it needs to run the gear.  This includes metadata such as the gear's author, the gear version, any runtime environment variables, and so on.  It also includes any inputs and configuration settings, which the user will have a chance to enter and modify when the gear is run in the Flywheel UI. It's written in <code>json</code> format.</p>
+<p>The manifest is going to provide Flywheel with all the information it needs to run the gear.  This includes metadata such as the gear's author, the gear version, any runtime environment variables, and so on.  It also includes any inputs and configuration settings, which the user will have a chance to enter and modify when the gear is run in the Flywheel UI. It's written in <code>json</code> format. These will almost always be necessary fields so feel free to copy-paste the following and edit as necessary.</p>
 
 </div>
 </div>
@@ -13404,21 +13404,21 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Manifest-metadata">Manifest metadata<a class="anchor-link" href="#Manifest-metadata">&#182;</a></h3><p>This is a top level section in the <code>json</code> and tells Flywheel all it needs to know about storing and running the gear, e.g. name, description, version, etc., as well as the location of the docker image repository the code lives in:</p>
-<div class="highlight"><pre><span></span><span class="s2">&quot;name&quot;</span><span class="err">:</span> <span class="s2">&quot;TutorialGear&quot;</span><span class="err">,</span>
-<span class="s2">&quot;label&quot;</span><span class="err">:</span> <span class="s2">&quot;A gear made for the gear building tutorial&quot;</span><span class="err">,</span>
+<div class="highlight"><pre><span></span><span class="s2">&quot;name&quot;</span><span class="err">:</span> <span class="s2">&quot;tutorialgear&quot;</span><span class="err">,</span>
+<span class="s2">&quot;label&quot;</span><span class="err">:</span> <span class="s2">&quot;Gear Building Tutorial&quot;</span><span class="err">,</span>
 <span class="s2">&quot;description&quot;</span><span class="err">:</span> <span class="s2">&quot;Test out how to build a gear&quot;</span><span class="err">,</span>
-<span class="s2">&quot;version&quot;</span><span class="err">:</span> <span class="s2">&quot;0.0.1_0.1.1&quot;</span><span class="err">,</span>
+<span class="s2">&quot;version&quot;</span><span class="err">:</span> <span class="s2">&quot;0.0.1_0.0.1&quot;</span><span class="err">,</span>
 <span class="s2">&quot;command&quot;</span><span class="err">:</span> <span class="s2">&quot;./run.py&quot;</span><span class="err">,</span>
 <span class="s2">&quot;author&quot;</span><span class="err">:</span> <span class="s2">&quot;New Gear Builder&quot;</span><span class="err">,</span>
 <span class="s2">&quot;maintainer&quot;</span><span class="err">:</span> <span class="s2">&quot;New Gear Builder&quot;</span><span class="err">,</span>
 <span class="s2">&quot;cite&quot;</span><span class="err">:</span> <span class="s2">&quot;&quot;</span><span class="err">,</span>
-<span class="s2">&quot;license&quot;</span><span class="err">:</span> <span class="s2">&quot;BSD&quot;</span><span class="err">,</span>
+<span class="s2">&quot;license&quot;</span><span class="err">:</span> <span class="s2">&quot;BSD-3-Clause&quot;</span><span class="err">,</span>
 <span class="s2">&quot;source&quot;</span><span class="err">:</span> <span class="s2">&quot;&quot;</span><span class="err">,</span>
 <span class="s2">&quot;url&quot;</span><span class="err">:</span> <span class="s2">&quot;&quot;</span><span class="err">,</span>
 <span class="s2">&quot;custom&quot;</span><span class="err">:</span> <span class="p">{</span>
     <span class="nt">&quot;gear-builder&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;analysis&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;pennbbl/tutorialgear:0.0.1_0.1.1&quot;</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;pennbbl/tutorialgear:0.0.1_0.0.1&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;flywheel&quot;</span><span class="p">:{</span><span class="nt">&quot;suite&quot;</span><span class="p">:</span> <span class="s2">&quot;PennBBL&quot;</span><span class="p">}</span>
 <span class="p">}</span>
@@ -13432,6 +13432,7 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Manifest-Config">Manifest Config<a class="anchor-link" href="#Manifest-Config">&#182;</a></h3><p>The manifest's <code>config</code> level represents any input settings that are not files, such as options or text input:</p>
 <div class="highlight"><pre><span></span><span class="s2">&quot;config&quot;</span><span class="err">:</span> <span class="p">{</span>
+
     <span class="nt">&quot;foobar&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Use foobar in this gear&quot;</span><span class="p">,</span>
@@ -13467,26 +13468,25 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The final product, manifest.json, looks like this:</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;TutorialGear&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;A gear made for the gear building tutorial&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tutorialgear&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Gear Building Tutorial&quot;</span><span class="p">,</span>
     <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Test out how to build a gear&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.1_0.1.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.1_0.0.1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;./run.py&quot;</span><span class="p">,</span>
     <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;New Gear Builder&quot;</span><span class="p">,</span>
     <span class="nt">&quot;maintainer&quot;</span><span class="p">:</span> <span class="s2">&quot;New Gear Builder&quot;</span><span class="p">,</span>
     <span class="nt">&quot;cite&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;BSD&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;BSD-3-Clause&quot;</span><span class="p">,</span>
     <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
     <span class="nt">&quot;custom&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;gear-builder&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;analysis&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;pennbbl/tutorialgear:0.0.1_0.1.1&quot;</span>
+            <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;pennbbl/tutorialgear:0.0.1_0.0.1&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;flywheel&quot;</span><span class="p">:{</span><span class="nt">&quot;suite&quot;</span><span class="p">:</span> <span class="s2">&quot;PennBBL&quot;</span><span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;api-key&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;base&quot;</span><span class="p">:</span> <span class="s2">&quot;api-key&quot;</span>
         <span class="p">},</span>
@@ -13495,9 +13495,9 @@ a.anchor-link {
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A random input file&quot;</span><span class="p">,</span>
             <span class="nt">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">false</span>
         <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="p">},</span>
 
-    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
 
         <span class="nt">&quot;foobar&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -13515,7 +13515,9 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Run-script">Run script<a class="anchor-link" href="#Run-script">&#182;</a></h2><p>Here's the code you actually want to execute. It could do anything you want, from complex analysis pipelines to printing to <code>stdout</code>. In this case, we're just going to do the latter. Here's a simple python script; you can learn about programming with the SDK <a href="">here</a>:</p>
+<h2 id="Run-script">Run script<a class="anchor-link" href="#Run-script">&#182;</a></h2><p>Here's the code you actually want to execute. It could do anything you want, from complex analysis pipelines to printing to <code>stdout</code>. In this case, we're just going to look at the config options, list files in the environment, and write a file to output.</p>
+<p>Following is a simple python script; you can learn about programming with the SDK <a href="..">here</a>.</p>
+<p>Note here the use of the <code>GearContext</code> function. This returns a dictionary that you can manipulate to access object IDs and configuration. The documentation for this is available <a href="https://github.com/flywheel-io/core/blob/master/sdk/codegen/src/main/resources/fw-python/gear_context.py">here</a>; we may want to provide a separate walk through of <code>GearContext</code> once we've fully figured it out.</p>
 
 </div>
 </div>
@@ -13524,15 +13526,24 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The final product, <code>run.py</code>, looks like this:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">flywheel</span> <span class="c1"># import the flywheel python SDK</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 
-<span class="n">context</span> <span class="o">=</span> <span class="n">flywheel</span><span class="o">.</span><span class="n">GearContext</span><span class="p">()</span>                          <span class="c1"># Get the gear context</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">config</span>                                   <span class="c1"># from the gear context, get the config settings</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">flywheel</span>
 
-<span class="n">fw</span> <span class="o">=</span> <span class="n">flywheel</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">get_input</span><span class="p">(</span><span class="s1">&#39;api_key&#39;</span><span class="p">)[</span><span class="s1">&#39;key&#39;</span><span class="p">])</span> <span class="c1"># log in to flywheel</span>
+<span class="c1"># from the gear context, get the config settings</span>
+<span class="n">context</span> <span class="o">=</span> <span class="n">flywheel</span><span class="o">.</span><span class="n">GearContext</span><span class="p">()</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">config</span>                                   
 
-<span class="n">analysis_id</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">destination</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>                   <span class="c1"># get the analysis object this gear run will be in</span>
+<span class="c1"># log in to flywheel</span>
+<span class="n">fw</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">client</span> 
+
+<span class="c1"># find the analysis object this belongs to</span>
+<span class="c1">## THIS DOES NOT WORK WHEN TESTING LOCALLY</span>
+
+<span class="n">analysis_id</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">destination</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+
+<span class="c1"># Some gymnastics</span>
 <span class="n">analysis_container</span> <span class="o">=</span> <span class="n">fw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">analysis_id</span><span class="p">)</span>
 <span class="n">project_container</span> <span class="o">=</span> <span class="n">fw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">analysis_container</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="s1">&#39;project&#39;</span><span class="p">])</span>
 <span class="n">session_container</span> <span class="o">=</span> <span class="n">fw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">analysis_container</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
@@ -13580,7 +13591,7 @@ a.anchor-link {
 <li>Copy in any necessary files/folders for the program to run</li>
 <li>Set an entrypoint</li>
 </ol>
-<p>Dockerfiles do follow a certain language with reserved words for commands. There's not much that we need ot know about that here, but you can learn more <a href="https://docs.docker.com/engine/reference/builder/">at this resource</a>.</p>
+<p>Dockerfiles do follow a certain language with reserved words for commands. There's not much that we need to know about that here, but you can learn more <a href="https://docs.docker.com/engine/reference/builder/">at this resource</a>.</p>
 
 </div>
 </div>
@@ -13620,9 +13631,10 @@ RUN mkdir -p ${FLYWHEEL}</code></pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Copying-Files">Copying Files<a class="anchor-link" href="#Copying-Files">&#182;</a></h3><p>Copy the code you want to run, into the docker image:</p>
+<h3 id="Copying-Files">Copying Files<a class="anchor-link" href="#Copying-Files">&#182;</a></h3><p>Copy the code you want to run into the docker image and remember to set permissions:</p>
 
-<pre><code>COPY run.py ${FLYWHEEL}/run.py</code></pre>
+<pre><code>COPY run.py ${FLYWHEEL}/run.py
+RUN chmod +x ${FLYWHEEL}/*</code></pre>
 
 </div>
 </div>
@@ -13651,25 +13663,116 @@ RUN mkdir -p ${FLYWHEEL}</code></pre>
 <span class="k">RUN</span> mkdir -p <span class="si">${</span><span class="nv">FLYWHEEL</span><span class="si">}</span>
 
 <span class="k">COPY</span> run.py <span class="si">${</span><span class="nv">FLYWHEEL</span><span class="si">}</span>/run.py
+<span class="k">RUN</span> chmod +x <span class="si">${</span><span class="nv">FLYWHEEL</span><span class="si">}</span>/*
 
-<span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;python run.py&quot;</span><span class="p">]</span>
+<span class="k">WORKDIR</span><span class="s"> /flywheel/v0</span>
+
+<span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;run.py&quot;</span><span class="p">]</span>
 </pre></div>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With these 3 files present, it's time to build the docker image that Flywheel will use to run your gear!</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Building-Images">Building Images<a class="anchor-link" href="#Building-Images">&#182;</a></h2><p>User <code>docker build -t &lt;dockerhub_Accountname&gt;/&lt;gear_name&gt;:&lt;gear_tag&gt; .</code> to build the image. Then, upload it to docker hub with <code>docker push &lt;dockerhub_Accountname&gt;/&lt;gear_name&gt;:&lt;gear_tag&gt; .</code>. This allows Flywheel to grab that image from the internet whenever it's asked to run your gear.</p>
+<p>Building docker images is a slow process but is well worth the investment in time. See <a href="https://www.howtoforge.com/tutorial/how-to-create-docker-images-with-dockerfile/">this guide</a> for more.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Testing">Testing<a class="anchor-link" href="#Testing">&#182;</a></h2><p>To test your gear, you can use the command <code>fw gear local</code>. It will spin up the container and run the entrypoint command as though it were on the virtual machine. You can use it like a command line tool:</p>
+
+<pre><code>$ fw gear local --help
+
+Run your gear from the current folder
+
+Usage:
+  fw gear local [flags]
+
+Flags:
+      --foobar          Use foobar in this gear (default true)
+  -h, --help            help for local
+      --infile string   A random input file</code></pre>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">flywheel</span>
-</pre></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This bit is tricky, but is useful in some cases. You'd need to have the files you want the gear to run on, locally available (?!), and additionally, the <code>GearContext</code> is not entirely useful; specifically, if you did <code>GearContext()</code>, then <code>context.destination['id']</code>, the local test would fail because the test doesn't have an analysis object assigned yet; this gear itself fails to test locally with the python script above!</p>
+<p>This is a challenge we are actively working with Flywheel developers to solve. In the mean time, we use the <a href="https://www.howtoforge.com/tutorial/how-to-create-docker-images-with-dockerfile/">class documentation</a> to guide us. Hopefully, all you'll need is the analysis ID, which is already documented for you in this tutorial.</p>
 
-    </div>
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Uploading-to-Flywheel">Uploading to Flywheel<a class="anchor-link" href="#Uploading-to-Flywheel">&#182;</a></h2><p>Once you've finished testing, you can upload your gear to Flywheel with <code>fw gear upload</code> (no arguments). Flywheel will package up your gear and ensure the manifest options make sense before uploading it to the GUI, where you can now run your gear!</p>
 
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./images/uploaded-gear.png" alt=""></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Gear-Maintenance">Gear Maintenance<a class="anchor-link" href="#Gear-Maintenance">&#182;</a></h1><p>As with all things in life, it's easy to obtain, but much more difficult to maintain.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We strongly recommend version controlling your gear's directory on Github, and committing changes incrementally.</p>
+<p>If something changes in your code, you must update the <code>manifest.json</code> file to increment the version. In Flywheel, you can either choose to have your <code>&lt;software_tag:gear_version_tag&gt;</code> identical, e.g. <code>0.0.1_0.0.1</code>, or to increment your software more frequently than incrementing the gear. E.g., our fMRIPrep <em>gear</em> is on version <code>0.2.2</code>, but the fMRIPrep algorithm is on version <code>1.5.2</code>; the benefit of this is that we can make changes to one and not the other.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you need to debug a gear that failed, locally, you can use docker to spin up a local container of what was running on Flywheel. <a href="https://docs.flywheel.io/hc/en-us/articles/360019109794-Running-a-Flywheel-Job-Locally-with-Docker">This guide</a> describes how this is done. In brief:</p>
+<ol>
+<li>Copy down a python script written by Flywheel developers that automates the process of recreating the failed state</li>
+<li>Run the script using your API key and the failed job ID as input; the output will be a bash script that will run docker</li>
+<li>Edit the bash script to use a docker image in which you have implemented your changes.</li>
+</ol>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="End">End<a class="anchor-link" href="#End">&#182;</a></h1><p>Thank you!</p>
+<p>Visit pennbbl.github.io for more documentation.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">

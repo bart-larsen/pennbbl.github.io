@@ -22,19 +22,26 @@ Standard Development Kit (SDK) from Python.
 
 In any browser (preferably Google Chrome), you can access Flywheel by visiting upenn.flywheel.io.
 
+## Installing the Flywheel SDK
+
+This assumes that you've already [installed miniconda](/docs/Basics/basics/#installing-python) and are using a python environment you have administrative rights to (ie you've run `conda activate`). To check that you're using the correct environment run
+
+```bash
+$ which pip
+/Users/my_account/miniconda3/envs/my_env/bin/pip
+```
+
+and see that `pip` is being used from within your conda environment. Now you can install the SDK using
+
+```bash
+$ pip install flywheel-sdk
+```
+
 
 ## Connecting with the SDK
 
-The flywheel CLI allows fw-heudiconv (or any other program you write) to communicate with Flywheel’s database. Follow their instructions here:
-
-https://docs.flywheel.io/hc/en-us/articles/360008162214
-
-Once installed and logged in, you should see your username when you do:
+The flywheel CLI allows you to communicate with Flywheel’s database. Follow their instructions [here](https://docs.flywheel.io/hc/en-us/articles/360008162214). Once installed and logged in, you should see your username when you do:
 ```
 $ fw status
 $ You are currently logged in as Tinashe Tapera to https://upenn.flywheel.io
 ```
-
-## Using the Python SDK
-
-As long as you have run the `fw login` operation from the previous

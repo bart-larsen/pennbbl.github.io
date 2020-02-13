@@ -210,3 +210,11 @@ and in python
 ```
 
 If there is no error message, you have a working Flywheel SDK!
+
+## Finalizing your setup
+
+After all these steps, it makes sense to return your .bashrc to non-writable mode
+
+```bash
+$ chmod -w ~/.bashrc
+```

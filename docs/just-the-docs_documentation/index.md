@@ -1,7 +1,7 @@
 ---
 layout: default
 title: just-the-docs
-nav_order: 4
+nav_order: 5
 has_children: true
 permalink: docs/just-the-docs_documentation/index
 ---

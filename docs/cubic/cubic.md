@@ -242,7 +242,7 @@ Additionally, you will need to be familiar with:
 
 This document must be saved as a `.txt` file and before being submitted with your request.
 
-Finally, you will need approval from your PI (Ted). This involves sending an email to the PI with a written blurb to the effect of "Do you approve of this project folder request", to which the PI only needs to respond "Yes, approved". Once you've got this you can screenshot the conversation (include the date in frame) and save that as an image.
+Finally, you will need approval from your PI. This involves sending an email to the PI with a written blurb to the effect of "Do you approve of this project folder request", to which the PI only needs to respond "Yes, approved". Once you've got this you can screenshot the conversation (include the date in frame) and save that as an image.
 
 With these two documents, you can now submit the request via the the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) — you'll need your CBICA/CUBIC login credentials for this.
 

@@ -7,18 +7,29 @@ nav_order: 5
 
 # Running analysis workflows
 
-This tutorial covers how to run an analysis gear on many subjects. Like most tutorials you will need to be logged in to Flywheel and start an interactive session, create `Client` and find the project you'd like to run the gear on. In this example we are working on a project called `gear_testing`, which is specified in the `fw.projects.find_first("label=gear_testing")` command.
+This tutorial covers how to run an analysis gear on many subjects. Like for most tutorials, you will need to be logged in to Flywheel and you will need to start an interactive python session. First, log into Flywheel via the command line interface (see https://docs.flywheel.io/hc/en-us/articles/360008162214 for details).
+
+```bash
+>>> fw login <yourapikey>
+```
+
+Then start an interactive python session (e.g. by typing ipython or python3.7 into the terminal). Once in the interactive session, import flywheel and create `Client`:
 
 ```python
 >>> import flywheel
 >>> fw = flywheel.Client()
+```
+
+Next, find the project you'd like to run the gear on. In this example we are working on a project called `gear_testing`, which is specified in the `fw.projects.find_first("label=gear_testing")` command.
+
+```python
 >>> project = fw.projects.find_first("label=gear_testing")
 >>> print(project.label)
 gear_testing
 
 ```
 
-In the code above, if get an error like `AttributeError: 'NoneType' object has no attribute 'label'` it means that Flywheel couldn't find a project with the label you specified.
+In the code above, if you get an error like `AttributeError: 'NoneType' object has no attribute 'label'` it means that Flywheel couldn't find a project with the label you specified.
 
 ## Finding a gear
 
@@ -178,7 +189,7 @@ Analysis gears store their results in a Flywheel data container. This container 
 
 ## Launching gears on sessions
 
-You may not want to run your gear on every session in a project. Instead, you can filter through subjects so the gear only runs on those with the scans you want.
+You may not want to run your gear on every session in a project. Instead, you can filter through subjects so the gear only runs on those with the scans you want. For example, to run your gear only on sessions that contain an acqusition with 'acq-64dir_dwi' in the name:
 
 ```python
 
@@ -191,7 +202,9 @@ You may not want to run your gear on every session in a project. Instead, you ca
 1329
 ```
 
-The sessions with a DWI scan will all be in the `sessions_to_run` variable. Now you can actually launch gears on these sessions.
+The sessions with a DWI scan will all be in the `sessions_to_run` variable. (Other useful methods for identifying specific sessions/subjects of interest are to index the sub name in session.subject.label or the ses name in session.label).
+
+Now you can actually launch gears on these sessions.
 
 
 ```python
@@ -209,7 +222,8 @@ for ses in sessions_to_run:
 
 ```
 
-You should keep track of the job ids from the
+You should keep track of the job ids.
+
 
 ### Cancelling mistakes
 
@@ -231,3 +245,7 @@ for job in jobs:
 ## Keeping track of your jobs
 
 ## Be mindful of costs
+
+## Launching gears with a single python script
+
+The commands presented above can be intergrated into a script and called collectively in order to run an analysis gear. See an example script [here](https://github.com/PennBBL/pennbbl.github.io/blob/master/code/examples/run_qsiprep-fw-hpc.py).

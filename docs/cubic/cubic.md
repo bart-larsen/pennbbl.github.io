@@ -4,9 +4,17 @@ title: CUBIC
 nav_order: 4
 has_children: true
 permalink: docs/cubic
+has_toc: false
 ---
 
-# Using the CUBIC cluster
+# Using the CUBIC Cluster
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 The cubic cluster is a very powerful set of servers that we can use for computing. Although they are running Linux, familiarity with Linux does not mean that you will be able to effectively use CUBIC. This section details how to get up and running on the CUBIC cluster.
 
@@ -218,3 +226,32 @@ After all these steps, it makes sense to return your .bashrc to non-writable mod
 ```bash
 $ chmod -w ~/.bashrc
 ```
+
+# Project Directory Access Request
+
+Once you have access to CUBIC, you may need to start a project in a new directory. Visit [this wiki](https://cbica-wiki.uphs.upenn.edu/wiki/index.php/Research_Projects#Project_Creation_Request) for more, or follow along below.
+
+First you need to fill out the data management document available [here](https://cbica-wiki.uphs.upenn.edu/wiki/images/Project_data_use_template.doc). This document will ask you for a number of details about your project, including the data's source and estimates about how much disk space you will need over a 6 month, 12 month, and 24 month period, and the estimated lifespan of the data ( 🤷). You will also need to provide the CUBIC usernames for everyone you want to have read and/or write access to the project — getting this done ahead of time is strongly recommended because, as you can imagine, requesting changes after-the-fact can be a bother.
+
+Additionally, you will need to be familiar with:
+
+- Whether or not the data has an IRB associated with it and who has approval
+- Whether or not the data is the *definitive* source
+- Whether or not you have a data use agreement
+- What will happen to the data at the end of its expected lifespan on the cluster
+
+This document must be saved as a `.txt` file and before being submitted with your request.
+
+Finally, you will need approval from your PI. This involves sending an email to the PI with a written blurb to the effect of "Do you approve of this project folder request", to which the PI only needs to respond "Yes, approved". Once you've got this you can screenshot the conversation (include the date in frame) and save that as an image.
+
+With these two documents, you can now submit the request via the the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) — you'll need your CBICA/CUBIC login credentials for this.
+
+<img src="/assets/images/request-tracker.png" alt="">
+
+Open a new ticket and, like applying for a job, **FILL OUT THE REQUEST WITH THE EXACT SAME INFORMATION AS YOU JUST FILLED IN THE DOCUMENT.**
+
+<img src="/assets/images/new-project-request.png" alt="">
+
+Lastly, attach your supporting documents.
+
+The process for accessing an existing project is similar, but fortunately you will not have to fill out a new data management document; only the PI approval and filling of the online ticket is required. You should receive an email from CBICA confirming your request, and you can always return to the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) to see the status of your ticket.

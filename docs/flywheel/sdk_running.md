@@ -248,4 +248,4 @@ for job in jobs:
 
 ## Launching gears with a single python script
 
-The commands presented above can be intergrated into a script and called collectively in order to run an analysis gear. See an example script [here](./run_qsiprep-fw-hpc.py).
+The commands presented above can be intergrated into a script and called collectively in order to run an analysis gear. See an example script [here](https://github.com/PennBBL/pennbbl.github.io/code/examples/run_qsiprep-fw-hpc.py).

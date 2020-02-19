@@ -227,6 +227,74 @@ After all these steps, it makes sense to return your .bashrc to non-writable mod
 $ chmod -w ~/.bashrc
 ```
 
+## Downloading data from flywheel to CUBIC
+
+1. The following script is an example of download the output of a flywheel analysis to CUBIC
+
+```python
+import flywheel
+import os
+
+fw = flywheel.Client()
+
+project = fw.lookup('bbl/ALPRAZ_805556') # Insert your project name here
+subjects = project.subjects() # This returns the subjects that are in your project
+
+# This is a string that you will use to partial match the name of the analysis output you want.
+analysis_str = 'acompcor'  
+
+for sub in subjects:
+    """Loop over subjects and get each session"""
+    sub_label = sub.label.lstrip('0') #Remove leading zeros
+    
+    for ses in sub.sessions(): 
+        ses_label = ses.label.lstrip('0') #Remove leading zeros
+        """Get the analyses for that session"""
+        full_ses = fw.get(ses.id)
+        these_analyses = [ana for ana in full_ses.analyses if analysis_str in ana.label]
+        these_analyses_labs = [ana.label for ana in full_ses.analyses if analysis_str in ana.label] 
+        if len(these_analyses)<1:
+             print('No analyses {} {}'.format(sub_label,ses_label))
+             continue
+        for this_ana in these_analyses:
+            """Looping over all analyses that match your string"""
+            if not this_ana.files:
+                # There are no output files.
+                continue
+
+            outputs = [f for f in this_ana.files if f.name.endswith('.zip')
+                and not f.name.endswith('.html.zip')] # Grabbing the zipped output file
+            output = outputs[0]
+            
+            # I am getting this ana_label to label my directory.
+            ## You may want to label differently and/or 
+            ## change the string splitting for your specific case.
+            ana_label = this_ana.label.split(' ')[0] 
+            
+            dest = '/cbica/projects/alpraz_EI/data/{}/{}/{}/'.format(ana_label,sub_label,ses_label) #output location
+            try:
+                os.makedirs(dest) # make the output directory
+            except OSError:
+                print(dest+" exists")
+            else: print("creating "+dest)
+            dest_file = dest+output.name
+            if not os.path.exists(dest_file):
+                """Download output file if it does not already exist"""
+                print("Downloading", dest_file)
+                output.download(dest_file)
+                print('Done')
+```   
+
+2.  We can run this script using qsub and the following bash script.  
+Providing the full path to python is important! It your path may be different depending on install location.  
+Obviously the name of your python script may also be different.
+
+```bash
+#!/bin/bash
+unset PYTHONPATH
+~/miniconda3/envs/flywheel/bin/python download_from_flywheel.py
+```
+
 # Project Directory Access Request
 
 Once you have access to CUBIC, you may need to start a project in a new directory. Visit [this wiki](https://cbica-wiki.uphs.upenn.edu/wiki/index.php/Research_Projects#Project_Creation_Request) for more, or follow along below.

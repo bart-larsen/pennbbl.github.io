@@ -52,6 +52,35 @@ You use your UPHS password to login. On success you will be greeted with their m
 
 You can hit the space bar to read all of this or `q` to exit.
 
+## Project Directory Access Request
+
+Once you have access to CUBIC, you may need to start a project in a new directory. Visit [this wiki](https://cbica-wiki.uphs.upenn.edu/wiki/index.php/Research_Projects#Project_Creation_Request) for more, or follow along below.
+
+First you need to fill out the data management document available [here](https://cbica-wiki.uphs.upenn.edu/wiki/images/Project_data_use_template.doc). This document will ask you for a number of details about your project, including the data's source and estimates about how much disk space you will need over a 6 month, 12 month, and 24 month period, and the estimated lifespan of the data ( 🤷). You will also need to provide the CUBIC usernames for everyone you want to have read and/or write access to the project — getting this done ahead of time is strongly recommended because, as you can imagine, requesting changes after-the-fact can be a bother.
+
+Additionally, you will need to be familiar with:
+
+- Whether or not the data has an IRB associated with it and who has approval
+- Whether or not the data is the *definitive* source
+- Whether or not you have a data use agreement
+- What will happen to the data at the end of its expected lifespan on the cluster
+
+This document must be saved as a `.txt` file and before being submitted with your request.
+
+Finally, you will need approval from your PI. This involves sending an email to the PI with a written blurb to the effect of "Do you approve of this project folder request", to which the PI only needs to respond "Yes, approved". Once you've got this you can screenshot the conversation (include the date in frame) and save that as an image.
+
+With these two documents, you can now submit the request via the the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) — you'll need your CBICA/CUBIC login credentials for this.
+
+<img src="/assets/images/request-tracker.png" alt="">
+
+Open a new ticket and, like applying for a job, **FILL OUT THE REQUEST WITH THE EXACT SAME INFORMATION AS YOU JUST FILLED IN THE DOCUMENT.** 😓
+
+<img src="/assets/images/new-project-request.png" alt="">
+
+Lastly, attach your supporting documents.
+
+The process for accessing an existing project is similar, but fortunately you will not have to fill out a new data management document; only the PI approval and filling of the online ticket is required. You should receive an email from CBICA confirming your request, and you can always return to the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) to see the status of your ticket.
+
 
 ## File permissions on CUBIC
 
@@ -246,13 +275,13 @@ analysis_str = 'acompcor'
 for sub in subjects:
     """Loop over subjects and get each session"""
     sub_label = sub.label.lstrip('0') #Remove leading zeros
-    
-    for ses in sub.sessions(): 
+
+    for ses in sub.sessions():
         ses_label = ses.label.lstrip('0') #Remove leading zeros
         """Get the analyses for that session"""
         full_ses = fw.get(ses.id)
         these_analyses = [ana for ana in full_ses.analyses if analysis_str in ana.label]
-        these_analyses_labs = [ana.label for ana in full_ses.analyses if analysis_str in ana.label] 
+        these_analyses_labs = [ana.label for ana in full_ses.analyses if analysis_str in ana.label]
         if len(these_analyses)<1:
              print('No analyses {} {}'.format(sub_label,ses_label))
              continue
@@ -265,12 +294,12 @@ for sub in subjects:
             outputs = [f for f in this_ana.files if f.name.endswith('.zip')
                 and not f.name.endswith('.html.zip')] # Grabbing the zipped output file
             output = outputs[0]
-            
+
             # I am getting this ana_label to label my directory.
-            ## You may want to label differently and/or 
+            ## You may want to label differently and/or
             ## change the string splitting for your specific case.
-            ana_label = this_ana.label.split(' ')[0] 
-            
+            ana_label = this_ana.label.split(' ')[0]
+
             dest = '/cbica/projects/alpraz_EI/data/{}/{}/{}/'.format(ana_label,sub_label,ses_label) #output location
             try:
                 os.makedirs(dest) # make the output directory
@@ -286,40 +315,10 @@ for sub in subjects:
 ```   
 
 2.  We can run this script using qsub and the following bash script.  
-Providing the full path to python is important! It your path may be different depending on install location.  
-Obviously the name of your python script may also be different.
+Providing the full path to python is important! Your path may be different depending on install location. Obviously the name of your python script may also be different.
 
 ```bash
 #!/bin/bash
 unset PYTHONPATH
 ~/miniconda3/envs/flywheel/bin/python download_from_flywheel.py
 ```
-
-# Project Directory Access Request
-
-Once you have access to CUBIC, you may need to start a project in a new directory. Visit [this wiki](https://cbica-wiki.uphs.upenn.edu/wiki/index.php/Research_Projects#Project_Creation_Request) for more, or follow along below.
-
-First you need to fill out the data management document available [here](https://cbica-wiki.uphs.upenn.edu/wiki/images/Project_data_use_template.doc). This document will ask you for a number of details about your project, including the data's source and estimates about how much disk space you will need over a 6 month, 12 month, and 24 month period, and the estimated lifespan of the data ( 🤷). You will also need to provide the CUBIC usernames for everyone you want to have read and/or write access to the project — getting this done ahead of time is strongly recommended because, as you can imagine, requesting changes after-the-fact can be a bother.
-
-Additionally, you will need to be familiar with:
-
-- Whether or not the data has an IRB associated with it and who has approval
-- Whether or not the data is the *definitive* source
-- Whether or not you have a data use agreement
-- What will happen to the data at the end of its expected lifespan on the cluster
-
-This document must be saved as a `.txt` file and before being submitted with your request.
-
-Finally, you will need approval from your PI. This involves sending an email to the PI with a written blurb to the effect of "Do you approve of this project folder request", to which the PI only needs to respond "Yes, approved". Once you've got this you can screenshot the conversation (include the date in frame) and save that as an image.
-
-With these two documents, you can now submit the request via the the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) — you'll need your CBICA/CUBIC login credentials for this.
-
-<img src="/assets/images/request-tracker.png" alt="">
-
-Open a new ticket and, like applying for a job, **FILL OUT THE REQUEST WITH THE EXACT SAME INFORMATION AS YOU JUST FILLED IN THE DOCUMENT.**
-
-<img src="/assets/images/new-project-request.png" alt="">
-
-Lastly, attach your supporting documents.
-
-The process for accessing an existing project is similar, but fortunately you will not have to fill out a new data management document; only the PI approval and filling of the online ticket is required. You should receive an email from CBICA confirming your request, and you can always return to the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) to see the status of your ticket.

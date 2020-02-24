@@ -36,7 +36,7 @@ sessions_to_run = []
 #Identify sessions to run based on specific session features (here, using acquisition label)
 for session in project.sessions():
     desired_session = 'acq-64dir_dwi' in [acq.label for acq in session.acquisitions()]
-    if desired_session
+    if desired_session:
         sessions_to_run.append(session)
 
 analysis_ids = []
@@ -50,3 +50,12 @@ for ses in sessions_to_run:
     except Exception as e:
         print(e)
         fails.append(ses)
+
+#Write analysis IDs and failed sessions to files
+with open('{}_{}_{}_analysisIDS.txt'.format(qsiprep.gear.name,qsiprep.gear.version,now), 'w') as f: 
+    for id in analysis_ids:
+        f.write("%s\n" % id)
+
+with open('{}_{}_{}_failSES.txt'.format(qsiprep.gear.name,qsiprep.gear.version,now), 'w') as a:
+    for ses in fails:
+        a.write("%s\n" % ses) 

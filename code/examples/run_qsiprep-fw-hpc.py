@@ -1,14 +1,15 @@
 import flywheel
 import datetime
 
-fw = flywheel.Client()
+fw = flywheel.Client() #get flywheel Client
 
-qsiprep = fw.lookup('gears/qsiprep-fw-hpc')
-project = fw.projects.find_first("label=gear_testing")
+qsiprep = fw.lookup('gears/qsiprep-fw-hpc') #find gear of interest
+project = fw.projects.find_first("label=gear_testing") #find Flywheel project of interest
 
-now = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M")
-analysis_label = 'exampleanalysis_{}_{}_{}'.format(qsiprep.gear.name,qsiprep.gear.version, now)
+now = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M") #define current data/time variable, to be used in labels
+analysis_label = 'exampleanalysis_{}_{}_{}'.format(qsiprep.gear.name,qsiprep.gear.version, now) #define a descriptive analysis label
 
+#example config params for qsiprep gear
 config = {
             "hmc_model": "eddy",
             "use_syn_sdc": False,
@@ -32,6 +33,7 @@ inputs = {
 }
 
 sessions_to_run = []
+#Identify sessions to run based on specific session features (here, using acquisition label)
 for session in project.sessions():
     desired_session = 'acq-64dir_dwi' in [acq.label for acq in session.acquisitions()]
     if desired_session
@@ -39,6 +41,7 @@ for session in project.sessions():
 
 analysis_ids = []
 fails = []
+#Launch gear on identified sessions
 for ses in sessions_to_run:
     try:
         _id = qsiprep.run(analysis_label=analysis_label,

@@ -333,8 +333,20 @@ Replace `my_project` below with you actual project folder name).
 ```bash
 $ sudo mkdir -p /cbica/projects/my_project
 ```
-Note: For Catalina users, there is a special way to create directories in `/`. Guide coming soon.
-
+> Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, their is a strange tecnique that was introduced to make symbolic links. Here are the steps:  
+  
+  > a. Make a directory in you home dir that will eventually be symbolically linked to `/`.  
+  ```bash
+  $ cd
+  $ mkdir -p cbica/projects/my_project
+  ```  
+ > b. Using a text editor, create a file called `synthetic.conf` and save it in `/etc`. You will need to use `sudo` to make a file in `/etc`; e.g. `sudo vim /etc/synthetic.conf`.  
+ > c. Put the following text in the file. You must use a `tab` rather than space.  
+  `cbica	/Users/my_home_folder/cbica`  
+  d. Restart the computer.  
+  e. You should now see a dir in the root dir, `/cbica`.  
+  f. Skip step 3!  
+  
 3. Change the owner of your folder to your local user rather than `root` so that you don't need to use `sudo` to do things with it.
 ```bash
 $ sudo chown -R my_username /cbica

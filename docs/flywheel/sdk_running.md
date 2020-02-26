@@ -222,12 +222,66 @@ for ses in sessions_to_run:
 
 ```
 
-You should keep track of the job ids.
-
-
-### Cancelling mistakes
+You should keep track of the ids. For example, you can write out the analysis ids and failed sessions to files.
 
 ```python
+
+with open('{}_{}_{}_analysisIDS.txt'.format(fmriprep.gear.name,fmriprep.gear.version,now), 'w') as f: 
+    for id in analysis_ids:
+        f.write("%s\n" % id)
+
+with open('{}_{}_{}_failSES.txt'.format(fmriprep.gear.name,fmriprep.gear.version,now), 'w') as a:
+    for ses in fails:
+        a.write("%s\n" % ses) 
+
+``` 
+
+## Checking gear output files and gear runs
+
+You can check what output files have been created in association with a specific analysis id.
+
+```python
+
+#get first analysis id by indexing into analysis_ids
+aa = fw.get(analysis_ids[0]) #or can simply use fw.get('insert_full_id_here')
+
+#look at what files are associated with this analysis id
+aa.files 
+
+#list files associated with this analysis id
+for file in aa.files:
+    print(file.name)
+
+#get sub associated with this analysis id
+aa.files[0].name
+
+```
+
+You can additionally check whether or not a specific output file of interest (for example, an fmriprep or qsiprep .html file) has been generated for a list of analysis ids.
+
+```python
+
+#define new function
+def run_succeeded(idnum):
+    obj = fw.get(idnum)
+    return len([f for f in obj.files if f.name.endswith('html.zip')]) > 0 
+
+#check whether html file has been generated for all ids in analysis_ids
+for aa in analysis_ids: 
+    print(aa, run_succeeded(aa))
+
+```
+
+This will return something like:
+
+5e52d18a6dea315a592a740c True
+
+5e52d18b6dea315a592a740e False
+
+## Cancelling mistakes
+
+```python
+
 jobs = fw.jobs.find('state=pending,gear_info.name="fw-heudiconv",destination.type="analysis"', limit=2000)
 
 
@@ -242,10 +296,8 @@ for job in jobs:
   job.change_state('cancelled')
 ```
 
-## Keeping track of your jobs
-
-## Be mindful of costs
-
 ## Launching gears with a single python script
 
 The commands presented above can be intergrated into a script and called collectively in order to run an analysis gear. See an example script [here](https://github.com/PennBBL/pennbbl.github.io/blob/master/code/examples/run_qsiprep-fw-hpc.py).
+
+## Be Mindful of Costs!

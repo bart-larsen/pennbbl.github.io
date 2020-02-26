@@ -322,3 +322,33 @@ Providing the full path to python is important! Your path may be different depen
 unset PYTHONPATH
 ~/miniconda3/envs/flywheel/bin/python download_from_flywheel.py
 ```
+
+## Mounting CUBIC on your local machine
+For those who want to mount their cbica project folder on their local machine. This guide uses SSHFS.
+
+1. Mac users need to download FUSE and SSHFS: https://osxfuse.github.io/ . 
+
+2. Create a mount point on your local machine that matches the file path to your project dir on CUBIC. Since you are making a dir on root, you need to use `sudo` . You will need to enter your computer password after entering the command.  
+Replace `my_project` below with you actual project folder name).  
+```bash
+$ sudo mkdir -p /cbica/projects/my_project
+```
+Note: For Catalina users, there is a special way to create directories in `/`. Guide coming soon.
+
+3. Change the owner of your folder to your local user rather than `root` so that you don't need to use `sudo` to do things with it.
+```bash
+$ sudo chown -R my_username /cbica
+``` 
+  
+4. Mount ussing `sshfs`
+```bash
+$ sshfs -o defer_permissions username@cbica-cluster:/cbica/projects/my_project /cbica/projects/my_project/
+```
+
+5. When you are done, unmount. This should ideally be done BEFORE you disconnect from the network to avoid confusing your computer for a few minutes and making the mountpoint temporarily unresponsive.
+
+```bash
+$ cd   # just to make sure we are not inside the mount dir
+$ umount /cbica/projects/my_project
+```
+voilà

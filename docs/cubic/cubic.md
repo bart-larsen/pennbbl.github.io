@@ -52,6 +52,35 @@ You use your UPHS password to login. On success you will be greeted with their m
 
 You can hit the space bar to read all of this or `q` to exit.
 
+## Project Directory Access Request
+
+Once you have access to CUBIC, you may need to start a project in a new directory. Visit [this wiki](https://cbica-wiki.uphs.upenn.edu/wiki/index.php/Research_Projects#Project_Creation_Request) for more, or follow along below.
+
+First you need to fill out the data management document available [here](https://cbica-wiki.uphs.upenn.edu/wiki/images/Project_data_use_template.doc). This document will ask you for a number of details about your project, including the data's source and estimates about how much disk space you will need over a 6 month, 12 month, and 24 month period, and the estimated lifespan of the data ( 🤷). You will also need to provide the CUBIC usernames for everyone you want to have read and/or write access to the project — getting this done ahead of time is strongly recommended because, as you can imagine, requesting changes after-the-fact can be a bother.
+
+Additionally, you will need to be familiar with:
+
+- Whether or not the data has an IRB associated with it and who has approval
+- Whether or not the data is the *definitive* source
+- Whether or not you have a data use agreement
+- What will happen to the data at the end of its expected lifespan on the cluster
+
+This document must be saved as a `.txt` file and before being submitted with your request.
+
+Finally, you will need approval from your PI. This involves sending an email to the PI with a written blurb to the effect of "Do you approve of this project folder request", to which the PI only needs to respond "Yes, approved". Once you've got this you can screenshot the conversation (include the date in frame) and save that as an image.
+
+With these two documents, you can now submit the request via the the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) — you'll need your CBICA/CUBIC login credentials for this.
+
+<img src="/assets/images/request-tracker.png" alt="">
+
+Open a new ticket and, like applying for a job, **FILL OUT THE REQUEST WITH THE EXACT SAME INFORMATION AS YOU JUST FILLED IN THE DOCUMENT.** 😓
+
+<img src="/assets/images/new-project-request.png" alt="">
+
+Lastly, attach your supporting documents.
+
+The process for accessing an existing project is similar, but fortunately you will not have to fill out a new data management document; only the PI approval and filling of the online ticket is required. You should receive an email from CBICA confirming your request, and you can always return to the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) to see the status of your ticket.
+
 
 ## File permissions on CUBIC
 
@@ -227,31 +256,114 @@ After all these steps, it makes sense to return your .bashrc to non-writable mod
 $ chmod -w ~/.bashrc
 ```
 
-# Project Directory Access Request
+## Downloading data from flywheel to CUBIC
 
-Once you have access to CUBIC, you may need to start a project in a new directory. Visit [this wiki](https://cbica-wiki.uphs.upenn.edu/wiki/index.php/Research_Projects#Project_Creation_Request) for more, or follow along below.
+1. The following script is an example of download the output of a flywheel analysis to CUBIC
 
-First you need to fill out the data management document available [here](https://cbica-wiki.uphs.upenn.edu/wiki/images/Project_data_use_template.doc). This document will ask you for a number of details about your project, including the data's source and estimates about how much disk space you will need over a 6 month, 12 month, and 24 month period, and the estimated lifespan of the data ( 🤷). You will also need to provide the CUBIC usernames for everyone you want to have read and/or write access to the project — getting this done ahead of time is strongly recommended because, as you can imagine, requesting changes after-the-fact can be a bother.
+```python
+import flywheel
+import os
 
-Additionally, you will need to be familiar with:
+fw = flywheel.Client()
 
-- Whether or not the data has an IRB associated with it and who has approval
-- Whether or not the data is the *definitive* source
-- Whether or not you have a data use agreement
-- What will happen to the data at the end of its expected lifespan on the cluster
+project = fw.lookup('bbl/ALPRAZ_805556') # Insert your project name here
+subjects = project.subjects() # This returns the subjects that are in your project
 
-This document must be saved as a `.txt` file and before being submitted with your request.
+# This is a string that you will use to partial match the name of the analysis output you want.
+analysis_str = 'acompcor'  
 
-Finally, you will need approval from your PI. This involves sending an email to the PI with a written blurb to the effect of "Do you approve of this project folder request", to which the PI only needs to respond "Yes, approved". Once you've got this you can screenshot the conversation (include the date in frame) and save that as an image.
+for sub in subjects:
+    """Loop over subjects and get each session"""
+    sub_label = sub.label.lstrip('0') #Remove leading zeros
 
-With these two documents, you can now submit the request via the the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) — you'll need your CBICA/CUBIC login credentials for this.
+    for ses in sub.sessions():
+        ses_label = ses.label.lstrip('0') #Remove leading zeros
+        """Get the analyses for that session"""
+        full_ses = fw.get(ses.id)
+        these_analyses = [ana for ana in full_ses.analyses if analysis_str in ana.label]
+        these_analyses_labs = [ana.label for ana in full_ses.analyses if analysis_str in ana.label]
+        if len(these_analyses)<1:
+             print('No analyses {} {}'.format(sub_label,ses_label))
+             continue
+        for this_ana in these_analyses:
+            """Looping over all analyses that match your string"""
+            if not this_ana.files:
+                # There are no output files.
+                continue
 
-<img src="/assets/images/request-tracker.png" alt="">
+            outputs = [f for f in this_ana.files if f.name.endswith('.zip')
+                and not f.name.endswith('.html.zip')] # Grabbing the zipped output file
+            output = outputs[0]
 
-Open a new ticket and, like applying for a job, **FILL OUT THE REQUEST WITH THE EXACT SAME INFORMATION AS YOU JUST FILLED IN THE DOCUMENT.**
+            # I am getting this ana_label to label my directory.
+            ## You may want to label differently and/or
+            ## change the string splitting for your specific case.
+            ana_label = this_ana.label.split(' ')[0]
 
-<img src="/assets/images/new-project-request.png" alt="">
+            dest = '/cbica/projects/alpraz_EI/data/{}/{}/{}/'.format(ana_label,sub_label,ses_label) #output location
+            try:
+                os.makedirs(dest) # make the output directory
+            except OSError:
+                print(dest+" exists")
+            else: print("creating "+dest)
+            dest_file = dest+output.name
+            if not os.path.exists(dest_file):
+                """Download output file if it does not already exist"""
+                print("Downloading", dest_file)
+                output.download(dest_file)
+                print('Done')
+```   
 
-Lastly, attach your supporting documents.
+2.  We can run this script using qsub and the following bash script.  
+Providing the full path to python is important! Your path may be different depending on install location. Obviously the name of your python script may also be different.
 
-The process for accessing an existing project is similar, but fortunately you will not have to fill out a new data management document; only the PI approval and filling of the online ticket is required. You should receive an email from CBICA confirming your request, and you can always return to the [Request Tracker](https://cbica-infr-vweb.uphs.upenn.edu/rt/) to see the status of your ticket.
+```bash
+#!/bin/bash
+unset PYTHONPATH
+~/miniconda3/envs/flywheel/bin/python download_from_flywheel.py
+```
+
+## Mounting CUBIC on your local machine
+For those who want to mount their cbica project folder on their local machine. This guide uses SSHFS.
+
+1. Mac users need to download FUSE and SSHFS: https://osxfuse.github.io/ . 
+
+**Creating a sensible mount point**  
+
+2. Create a mount point on your local machine that matches the file path to your project dir on CUBIC. Since you are making a dir on root, you need to use `sudo` . You will need to enter your computer password after entering the command.  
+Replace `my_project` below with you actual project folder name).  
+```bash
+$ sudo mkdir -p /cbica/projects/my_project
+```
+> Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, their is a strange tecnique that was introduced to make symbolic links. Here are the steps:  
+  
+  > a. Make a directory in you home dir that will eventually be symbolically linked to `/`.  
+  ```bash
+  $ cd
+  $ mkdir -p cbica/projects/my_project
+  ```  
+ > b. Using a text editor, create a file called `synthetic.conf` and save it in `/etc`. You will need to use `sudo` to make a file in `/etc`; e.g. `sudo vim /etc/synthetic.conf`.  
+ > c. Put the following text in the file. You must use a `tab` rather than space.  
+  `cbica	/Users/my_home_folder/cbica`  
+  d. Restart the computer.  
+  e. You should now see a dir in the root dir, `/cbica`.  
+  f. Skip step 3!  
+  
+3. Change the owner of your folder to your local user rather than `root` so that you don't need to use `sudo` to do things with it.
+```bash
+$ sudo chown -R my_username /cbica
+``` 
+**Mounting with `ssfhs`**  
+
+4. Mount ussing `sshfs`
+```bash
+$ sshfs -o defer_permissions username@cbica-cluster:<my-folder-on-CUBIC> <my-local-folder>
+```
+
+5. When you are done, unmount. This should ideally be done BEFORE you disconnect from the network to avoid confusing your computer for a few minutes and making the mountpoint temporarily unresponsive.
+
+```bash
+$ cd   # just to make sure we are not inside the mount dir
+$ umount /cbica/projects/my_project #your local folder
+```
+voilà

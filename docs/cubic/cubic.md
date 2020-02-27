@@ -324,43 +324,43 @@ unset PYTHONPATH
 ```
 
 ## Mounting CUBIC on your local machine
-For those who want to mount their cbica project folder on their local machine. This guide uses SSHFS.
+A guide for those who want to mount their cbica project folder on their local machine. This guide uses SSHFS. The first part discusses creating a mountpoint on your machine that matches the directory structure of CUBIC. This is useful because all of you scripts that contain filepaths will work on locally and on the server (very convenient!). If you already have a mountpoint, or prefer to mount somewhere else, you can ignore the first part and skip to the section on mounting using `sshfs`.
 
-1. Mac users need to download FUSE and SSHFS: https://osxfuse.github.io/ . 
-
-2. Create a mount point on your local machine that matches the file path to your project dir on CUBIC. Since you are making a dir on root, you need to use `sudo` . You will need to enter your computer password after entering the command.  
+### Creating a sensible mount point  
+ 
+1. Create a mount point on your local machine that matches the file path to your project dir on CUBIC (Catalina users, see the note below). Since you are making a dir on root, you need to use `sudo` . You will need to enter your computer password after entering the command.  
 Replace `my_project` below with you actual project folder name).  
 ```bash
 $ sudo mkdir -p /cbica/projects/my_project
 ```
-> Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, their is a strange tecnique that was introduced to make symbolic links. Here are the steps:  
+2. Change the owner of your folder to your local user rather than `root` so that you don't need to use `sudo` to do things with it.
+```bash
+$ sudo chown -R my_username /cbica
+``` 
+#### Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, their is a strange tecnique that was introduced to make symbolic links. Here are the steps:  
   
-  > a. Make a directory in you home dir that will eventually be symbolically linked to `/`.  
+  a. Make a directory in you home dir that will eventually be symbolically linked to `/`.  
   ```bash
   $ cd
   $ mkdir -p cbica/projects/my_project
   ```  
- > b. Using a text editor, create a file called `synthetic.conf` and save it in `/etc`. You will need to use `sudo` to make a file in `/etc`; e.g. `sudo vim /etc/synthetic.conf`.  
- > c. Put the following text in the file. You must use a `tab` rather than space.  
+  b. Using a text editor, create a file called `synthetic.conf` and save it in `/etc`. You will need to use `sudo` to make a file in `/etc`; e.g. `sudo vim /etc/synthetic.conf`.  
+  c. Put the following text in the file. You must use a `tab` rather than space.  
   `cbica	/Users/my_home_folder/cbica`  
   d. Restart the computer.  
   e. You should now see a dir in the root dir, `/cbica`.  
-  f. Skip step 3!  
   
-3. Change the owner of your folder to your local user rather than `root` so that you don't need to use `sudo` to do things with it.
-```bash
-$ sudo chown -R my_username /cbica
-``` 
-  
-4. Mount ussing `sshfs`
+### Mounting CUBIC
+1. Mac users need to download FUSE and SSHFS: https://osxfuse.github.io/ .    
+2. Mount ussing `sshfs`
 ```bash
 $ sshfs -o defer_permissions username@cbica-cluster:/cbica/projects/my_project /cbica/projects/my_project/
-```
+```  
 
-5. When you are done, unmount. This should ideally be done BEFORE you disconnect from the network to avoid confusing your computer for a few minutes and making the mountpoint temporarily unresponsive.
+3. When you are done, unmount. This should ideally be done BEFORE you disconnect from the network to avoid confusing your computer for a few minutes and making the mountpoint temporarily unresponsive.
 
 ```bash
 $ cd   # just to make sure we are not inside the mount dir
 $ umount /cbica/projects/my_project
-```
+```  
 voilà

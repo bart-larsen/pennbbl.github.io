@@ -258,7 +258,7 @@ $ chmod -w ~/.bashrc
 
 ## Downloading data from flywheel to CUBIC
 
-1. The following script is an example of download the output of a flywheel analysis to CUBIC
+The following script is an example of download the output of a flywheel analysis to CUBIC
 
 ```python
 import flywheel
@@ -314,7 +314,7 @@ for sub in subjects:
                 print('Done')
 ```   
 
-2.  We can run this script using qsub and the following bash script.  
+We can run this script using qsub and the following bash script.  
 Providing the full path to python is important! Your path may be different depending on install location. Obviously the name of your python script may also be different.
 
 ```bash
@@ -327,7 +327,7 @@ unset PYTHONPATH
 A guide for those who want to mount their cbica project folder on their local machine. This guide uses SSHFS. The first part discusses creating a mountpoint on your machine that matches the directory structure of CUBIC. This is useful because all of you scripts that contain filepaths will work on locally and on the server (very convenient!). If you already have a mountpoint, or prefer to mount somewhere else, you can ignore the first part and skip to the section on mounting using `sshfs`.
 
 ### Creating a sensible mount point  
- 
+
 1. Create a mount point on your local machine that matches the file path to your project dir on CUBIC (Catalina users, see the note below). Since you are making a dir on root, you need to use `sudo` . You will need to enter your computer password after entering the command.  
 Replace `my_project` below with you actual project folder name).  
 ```bash
@@ -336,20 +336,20 @@ $ sudo mkdir -p /cbica/projects/my_project
 2. Change the owner of your folder to your local user rather than `root` so that you don't need to use `sudo` to do things with it.
 ```bash
 $ sudo chown -R my_username /cbica
-``` 
-#### Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, their is a strange tecnique that was introduced to make symbolic links. Here are the steps:  
-  
-  a. Make a directory in you home dir that will eventually be symbolically linked to `/`.  
+```
+
+> Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, their is a strange tecnique that was introduced to make symbolic links. Here are the steps:  
+1. Make a directory in you home dir that will eventually be symbolically linked to `/`.  
   ```bash
   $ cd
   $ mkdir -p cbica/projects/my_project
   ```  
-  b. Using a text editor, create a file called `synthetic.conf` and save it in `/etc`. You will need to use `sudo` to make a file in `/etc`; e.g. `sudo vim /etc/synthetic.conf`.  
-  c. Put the following text in the file. You must use a `tab` rather than space.  
+2. Using a text editor, create a file called `synthetic.conf` and save it in `/etc`. You will need to use `sudo` to make a file in `/etc`; e.g. `sudo vim /etc/synthetic.conf`.  
+3. Put the following text in the file. You must use a `tab` rather than space.  
   `cbica	/Users/my_home_folder/cbica`  
-  d. Restart the computer.  
-  e. You should now see a dir in the root dir, `/cbica`.  
-  
+4. Restart the computer.  
+5. You should now see a dir in the root dir, `/cbica`.  
+
 ### Mounting CUBIC
 1. Mac users need to download FUSE and SSHFS: https://osxfuse.github.io/ .    
 2. Mount ussing `sshfs`

@@ -27,7 +27,7 @@ This site documents knowledge and practices in informatics, engineering, and sys
 
 This site will help you navigate informatics at LINC.
 
-This effort's success is dependent on your involvement as lab members and a community, so if you have edits to suggest, or documentation requests, please make them known by submitting an [issue](https://github.com/PennBBL/pennbbl.github.io/issues) or a [pull request](https://github.com/PennBBL/pennbbl.github.io/pulls). If you are a LINC member and are documenting one of your tools/processes, please create your documentation according to the LINC documentation guidelines ([documentation guidelines on how to create documentation coming soon]()) and submit a [Pull Request](https://github.com/PennBBL/pennbbl.github.io/pulls), so it can be reviewed and added to the site.
+This effort's success is dependent on your involvement as lab members and a community, so if you have edits to suggest, or documentation requests, please make them known by submitting an [issue](https://github.com/PennBBL/pennbbl.github.io/issues) or a [pull request](https://github.com/PennBBL/pennbbl.github.io/pulls). If you are a LINC member and are documenting one of your tools/processes, please create your documentation according to the [LINC documentation guidelines](docs/Contributing/contributing) and submit a [Pull Request](https://github.com/PennBBL/pennbbl.github.io/pulls), so it can be reviewed and added to the site.
 
 ---
 

@@ -79,6 +79,20 @@ On the next page you can explicitly ask for someone to review the changes to you
 
 When you are ready, hit "Submit" and your code will be reviewed and merged into the code base. Once this is done, your new documentation will show up automatically on the website in a matter of minutes!
 
+# Merge Conflicts & Syncing
+
+Sometimes, when you've been working on contributing code, you may find that someone else has been working on the same file. This creates a merge conflict when you try to put your changes together. To solve this, it may be necessary to get your files back on track with whatever has happened while you were editing — this is called *syncing your fork*, and is basically everything we discussed above but in reverse. The steps are as follows (we will use the terms "you" to denote your forked repository, and "them" to denote the repository you forked from):
+
+1. Use the Github *compare* tool to compare your repository against the one you forked; initially, it will have theirs as the *base repository* on the left, and your fork as the *head repository* on the right. This means a pull request will ask to merge *head into base*... We want to accomplish the opposite!
+
+2. Switch the base repository to your fork; you'll now get a message that says you have no changes to compare (it is you comparing with you, after all).
+
+3. Click on "compare against forks" at the top, and change the head (on the right) to *their* repository.
+
+4. Now you can see the commits that *they* made since you forked and started working, if any; from this page, start a pull request, which is essentially you, *asking you*, if you want their commits added to your fork.
+
+You can see this process explained in further detail [here](https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser) and [here](https://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381).
+
 # For Professionals
 
 This section describes how to accomplish the above using `jekyll` at the command line. (Coming Soon).

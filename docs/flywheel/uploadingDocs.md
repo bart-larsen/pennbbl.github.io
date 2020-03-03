@@ -10,7 +10,7 @@ There are several ways to get your data onto flywheel. Which one you should use 
 
 1. The Graphical User Interface (GUI), a.k.a. the website: This is best to use only when you are uploading small files, such as attachments and logs, to individual projects, subejcts, sessions, or acquisitions.
 2. The Command Line Interface: This is the most flexible way to upload your data. There are several commands that you can use and tailor to your particular use case. You can find the documentation here: https://docs.flywheel.io/hc/en-us
-3. Using the Custom Info Uploader Script: This is how cool kids upload their subject-level custom information. If you have a csv of data you need to upload to individual subjects, this tool will allow you to do it in one command.
+3. Using the Custom Info Uploader Script: If you have a csv of data you need to upload to individual subjects, this tool will allow you to do it in one command.
 4. Using the Self-Report Score and Upload Gear:
 
 ## Way 1: Using the GUI

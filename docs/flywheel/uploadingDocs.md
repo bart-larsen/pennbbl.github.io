@@ -19,22 +19,22 @@ There are several ways to get your data onto flywheel. Which one you should use 
 The procedure for uploading to these levels is nearly identical, so we'll use the project level as an example. 
 
 **Step 1:** Go to any subject in the project of interest, and navigate to the project tab.
-![alt text](https://github.com/PennBBL/pennbbl.github.io/assets/images/project_tab.png "Project Tab")
+![alt text](https://pennbbl.github.io/assets/images/project_tab.png "Project Tab")
 
 **Step 2:** Scroll down until you see the Attachments, and click on "Upload Attachment".
-![alt text](https://github.com/PennBBL/pennbbl.github.io/assets/images/attachments.png "Attachments")
+![alt text](https://pennbbl.github.io/assets/images/attachments.png "Attachments")
 
 **Step 3:** Then, you should see this window prompting you to drag the file to upload. Do so, and the file should upload automatically. Click close when you're done.
-![alt text](https://github.com/PennBBL/pennbbl.github.io/assets/images/upload_file.png "Upload File")
+![alt text](https://pennbbl.github.io/assets/images/upload_file.png "Upload File")
 
 **This same procedure can be done at the subject and session levels by clicking on the appropriate tab.
 
 #### Uploading a file at the acquisition level:
 To upload a file at the acquisition level, navigate to the Acquisitions tab. Then scroll down to the acquisiton you'd like to upload to, and click on the rightmost three vertical buttons as seen below.
-![alt text](https://github.com/PennBBL/pennbbl.github.io/assets/images/acquisition_threebuttons.png "Upload File")
+![alt text](https://pennbbl.github.io/assets/images/acquisition_threebuttons.png "Upload File")
 
 select "Upload Data To Acquisition", and drag the file to the box prompting you to upload.
-![alt text](https://github.com/PennBBL/pennbbl.github.io/assets/images/acq_dragdrop.png "Upload File Box")
+![alt text](https://pennbbl.github.io/assets/images/acq_dragdrop.png "Upload File Box")
 click on "Upload" when you're done.
 
 

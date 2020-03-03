@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Custom Info Uploader
+title: Uploading To Flywheel
 parent: Flywheel
 nav_order: 6
 has_toc: false

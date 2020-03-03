@@ -14,18 +14,22 @@ There are several ways to get your data onto flywheel. Which one you should use 
 4. Using the Self-Report Score and Upload Gear:
 
 ## Way 1: Using the GUI
-A. Uploading a file at the project level: Go to any subject in the project of interest, and navigate to the project tab.
+#### Uploading a file at the project, subject, and session levels: 
+
+The procedure for uploading to these levels is nearly identical, so we'll use the project level as an example. 
+
+Step 1: Go to any subject in the project of interest, and navigate to the project tab.
 ![alt text](https://github.com/PennBBL/pennbbl.github.io/assets/images/project_tab.png "Project Tab")
 
-Scroll down until you see the Attachments, and click on "Upload Attachment".
+Step 2: Scroll down until you see the Attachments, and click on "Upload Attachment".
 ![alt text](https://github.com/PennBBL/pennbbl.github.io/assets/images/attachments.png "Attachments")
 
-Then, you should see this window prompting you to drag the file to upload.
+Then, you should see this window prompting you to drag the file to upload. Do so, and the file should upload automatically. Click close when you're done.
 ![alt text](https://github.com/PennBBL/pennbbl.github.io/assets/images/upload_file.png "Upload File")
 
-Do so, and the file should upload automatically. Click close when you're done.
 This same procedure can be done at the subject and session levels by clicking on the appropriate tab.
 
+#### Uploading a file at the acquisition level:
 To upload a file at the acquisition level, navigate to the Acquisitions tab. Then scroll down to the acquisiton you'd like to upload to, and click on the rightmost three vertical buttons as seen below.
 ![alt text](https://github.com/PennBBL/pennbbl.github.io/assets/images/acquisition_threebuttons.png "Upload File")
 

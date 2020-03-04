@@ -176,4 +176,9 @@ Once these inputs are uploaded, you can launch the gear from any subject in your
 
 To launch the gear, navigate to a subject, and click the "run gear" button. Select Analysis gear, and scroll down to find "Self Report Score and Upload". 
 
-Now, you'll do setup. 
+You should then see this screen. Here you select the raw data csv and scoring code from your project attachments. 
+![alt text](https://pennbbl.github.io/assets/images/inputs_setup.png "Inputs Setup")
+
+Then select the Configuration tab, and you should see this screen. Type in the name of the custom info field, and the project, and you should be good to go. Make sure to select your scoring code's correct language. Simply hit Run Gear when you're done. 
+![alt text](https://pennbbl.github.io/assets/images/config_setup.png "Config Setup")
+

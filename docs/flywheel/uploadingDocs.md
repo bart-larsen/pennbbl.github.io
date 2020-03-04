@@ -164,3 +164,16 @@ for i in range(len(subjects)):
 ```
 
 ## Way 4: Using the Self-Report Score and Upload Gear
+This method of uploading has a very specific use case: when you have raw, unscored data, that you want to score and upload to flywheel while keeping track of your scoring code. 
+
+Two inputs are required: 
+1. Your scoring code, either in R or Python. It should output a CSV with the following characteristics: No Protected Health Information (PHI) in the file, All columns are named, The subject ID column is named "bblid". 
+2. Your raw data csv. 
+
+These inputs should be attached at the project level. 
+
+Once these inputs are uploaded, you can launch the gear from any subject in your project (any subject will do, it will operate on the entire project).
+
+To launch the gear, navigate to a subject, and click the "run gear" button. Select Analysis gear, and scroll down to find "Self Report Score and Upload". 
+
+Now, you'll do setup. 

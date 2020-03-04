@@ -9,9 +9,14 @@ has_toc: false
 There are several ways to get your data onto flywheel. Which one you should use will depend on the type and quantity of data you are uploading.
 
 **1. The Graphical User Interface (GUI), a.k.a. the website:** This is best to use only when you are uploading small files, such as attachments and logs, to individual projects, subejcts, sessions, or acquisitions.
+
 **2. The Command Line Interface:** This is the most flexible way to upload your data. There are several commands that you can use and tailor to your particular use case. You can find the documentation here: https://docs.flywheel.io/hc/en-us
+
 **3. Using the Custom Info Uploader Script:** If you have a csv of data you need to upload to individual subjects, this tool will allow you to do it in one command.
+
 **4. Using the Self-Report Score and Upload Gear:** This is a flywheel gear that takes in a custom scoring code, and a csv of raw scale data, and then applies that scoring code to the raw data and attaches each subject's scores to their custom info on Flywheel. 
+
+
 
 ## Way 1: Using the GUI
 ### Uploading a file at the project, subject, and session levels: 

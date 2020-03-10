@@ -338,8 +338,8 @@ $ sudo mkdir -p /cbica/projects/my_project
 $ sudo chown -R my_username /cbica
 ```
 
-> Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, their is a strange tecnique that was introduced to make symbolic links. Here are the steps:  
-1. Make a directory in you home dir that will eventually be symbolically linked to `/`.  
+> Note: For Catalina users, with the update to Catalina, you can longer make directories in `/`. Instead, there is a strange tecnique that was introduced to make symbolic links. Here are the steps:  
+1. Make a directory in you home dir (or elsewhere if you prefer) that will eventually be symbolically linked to `/`.  
   ```bash
   $ cd
   $ mkdir -p cbica/projects/my_project
@@ -360,7 +360,10 @@ For example, if you have set up your mount point according to the above guide, y
 ```bash
 $ sshfs -o defer_permissions username@cbica-cluster:/cbica/projects/my_project /cbica/projects/my_project/
 ```  
-I recommend putting this command into a script or alias if you need to mount often.
+I recommend putting this command into a script or alias if you need to mount often. E.g. in your `.profile` put:   
+`alias mc="sshfs -o defer_permissions username@cbica-cluster:/cbica/projects/my_project /cbica/projects/my_project/"`   
+Now you can simply type `mc` to mount cubic.  
+Pro-tip: Follow these instructions to no longer need to type your password: http://www.linuxproblem.org/art_9.html
 
 3. When you are done, unmount. This should ideally be done BEFORE you disconnect from the network to avoid confusing your computer for a few minutes and making the mountpoint temporarily unresponsive.
 
